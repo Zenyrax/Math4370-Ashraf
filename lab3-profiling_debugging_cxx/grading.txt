@@ -1,0 +1,16 @@
+General (turned in correctly):
+* submitted according to lab instructions
+
+Optimization (code and commentary):
+* These optimizations were indeed good, but they required you to completely
+  change the underlying data structure for each vector -- in many contexts
+  you would want the 3D array structure -- how could you optimize the code
+  performance while *still* retaining the 3D structure?
+
+* That said, your code optimizations were excellent, and your conclusions were
+  accurate.
+
+Debugging:
+* Correct debugging -- runs and gives the correct solution.
+
+Grade: 98
