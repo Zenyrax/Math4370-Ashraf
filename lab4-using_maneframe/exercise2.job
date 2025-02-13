@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --job-name=ex2_ashraf
+#SBATCH --time=00:10:00
+#SBATCH --partition=dev
+#SBATCH -A reynolds_math6370_1252_001c_0001
+#SBATCH --output=ex2_out.txt
+#SBATCH --error=ex2_err.txt
+#SBATCH --mail-user=fashraf@mail.smu.edu
+#SBATCH --mail-type=ALL
+
+python ./myjob.py 10
+python ./myjob.py 100
+python ./myjob.py 1000
+python ./myjob.py 10000
+python ./myjob.py 100000
+python ./myjob.py 1000000
+python ./myjob.py 10000000

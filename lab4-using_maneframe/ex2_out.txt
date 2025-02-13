@@ -1,0 +1,28 @@
+Using 10 subintervals:
+  pi approximation is: 3.1399259889071587
+  with relative error: 0.000530516
+  total time required: 1.4782e-05
+Using 100 subintervals:
+  pi approximation is: 3.1415759869231308
+  with relative error: 5.30516e-06
+  total time required: 6.24657e-05
+Using 1000 subintervals:
+  pi approximation is: 3.1415924869231278
+  with relative error: 5.30516e-08
+  total time required: 0.000498056
+Using 10000 subintervals:
+  pi approximation is: 3.1415926519231183
+  with relative error: 5.30519e-10
+  total time required: 0.00507021
+Using 100000 subintervals:
+  pi approximation is: 3.1415926535731322
+  with relative error: 5.30333e-12
+  total time required: 0.0489535
+Using 1000000 subintervals:
+  pi approximation is: 3.1415926535897176
+  with relative error: 2.40309e-14
+  total time required: 0.517992
+Using 10000000 subintervals:
+  pi approximation is: 3.1415926535904335
+  with relative error: -2.03838e-13
+  total time required: 4.83287
