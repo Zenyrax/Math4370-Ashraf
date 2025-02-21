@@ -1,0 +1,3 @@
+ Test run using 8 OpenMP threads
+ Final rms norm = 0.2045321181289279
+ Total run time = 0.5462447442
