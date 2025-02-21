@@ -1,0 +1,31 @@
+General (turned in correctly):
+* Mis-named "exercise.job" should be "exercise1.job", otherwise looks good
+
+Exercise 1:
+* names job ex1_surname: good
+* sets the project name: good
+* sets input of 10000 subintervals: good
+* specifies the dev partition: good
+* sets the maximum run time to 2 minutes: good
+* sends the standard output to a file ex1_out.txt: good
+* sends the standard error to a file ex1_err.txt: good
+* sends 'all' notifications to SMU email address: good
+
+Exercise 2:
+* names job ex2_surname: good
+* sets the project name: good
+* specifies the dev partition: good
+* sets maximum run time to 10 minutes: good
+* sends stdout to ex2_out.txt: good
+* sends stderr to ex2_err.txt: good
+* sends 'all' notifications to SMU email address: good
+* sets subintervals to {1000, 10000, 100000, 1000000, 10000000}: good
+
+Analysis of results:
+* summary information myjob.sh runs: good
+* accuracy estimate: good
+* accuracy discussion: good
+* complexity estimate: good
+* complexity discussion: good
+
+Grade: 98
