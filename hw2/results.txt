@@ -1,0 +1,17 @@
+Nested pointers:
+GramSchmidt2d time (m =10000,n=1000): 0.21855421
+GramSchmidt2d time (m =1000,n=10000): 0.22944108899999999
+GramSchmidt2d time (m =100,n=100000): 0.23645798300000001
+GramSchmidt2d time (m =10,n=1000000): 0.22714953299999999
+GramSchmidt2d time (m =100000,n=100): 0.22717533400000001
+GramSchmidt2d time (m =1000000,n=10): 0.24566272
+
+Flattened:
+GramSchmidt2d time (m =10000,n=1000): 0.22255865599999999
+GramSchmidt2d time (m =1000,n=10000): 0.223180921
+GramSchmidt2d time (m =100,n=100000): 0.22759101000000001
+GramSchmidt2d time (m =10,n=1000000): 0.22193592100000001
+GramSchmidt2d time (m =100000,n=100): 0.22657656600000001
+GramSchmidt2d time (m =1000000,n=10): 0.226716628
+
+There doesn't seem to be much of a difference in speed at all between the dimensions of the arrays or the storage format.
