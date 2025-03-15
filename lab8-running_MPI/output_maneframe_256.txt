@@ -1,0 +1,3 @@
+ starting MPI with 256 processes
+ dot-product = 1.66666666667
+     runtime = 0.130993555
