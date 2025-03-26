@@ -11,7 +11,7 @@ double magnitude(const std::vector<double>& point) {
   return std::sqrt(sum);
 }
 
-double montecarlo(double (*f)(std::vector<double>), int (*h)(std::vector<double>, double(std::vector<double>)), std::vector<std::pair<double, double>> hypercube, double M, double real_value = 0) {
+double montecarlo(double (*f)(std::vector<double>), int (*h)(std::vector<double>, double(std::vector<double>)), std::vector<std::pair<double, double>> hypercube, int M, double real_value = 0, double threshold = 0) {
   // Get dimension of the function by the size of the hypercube 
   int dimensions = hypercube.size();
 
@@ -29,42 +29,25 @@ double montecarlo(double (*f)(std::vector<double>), int (*h)(std::vector<double>
   int N = 0;
   double third = 0;
   std::vector<double> random_point(dimensions);
-  if (real_value == 0) {
-    for (size_t i = 0; i < M; i++) {
-      // Generate a random point
-      for (size_t j = 0; j < dimensions; j++) {
-        std::uniform_real_distribution<> dis(hypercube[j].first, hypercube[j].second);
-        random_point[j] = dis(gen);
-      }
-
-      //Is that random point in our function?
-      // if(h(random_point, f) == 1) {
-      //   N++;
-      //   third += f(random_point);
-      // }
-      third += f(random_point) * h(random_point, f);
-    }
-  } else {
-    double threshold = M;
-    M = 1;
+  size_t i;
+  for (i = 0; i < M; i++) {
+    // Generate a random point
     for (size_t j = 0; j < dimensions; j++) {
       std::uniform_real_distribution<> dis(hypercube[j].first, hypercube[j].second);
       random_point[j] = dis(gen);
     }
-    third += f(random_point) * h(random_point, f);
-    while (std::fabs(real_value - (hypercube_area * third / M)) > threshold) {
-      for (size_t j = 0; j < dimensions; j++) {
-        std::uniform_real_distribution<> dis(hypercube[j].first, hypercube[j].second);
-        random_point[j] = dis(gen);
-      }
 
-      third += f(random_point) * h(random_point, f);
-      M++;
+    // Value of f is added this sum if it passes the indicator function
+    third += f(random_point) * h(random_point, f);
+
+    // If a error threshold has been provided, break early if it's met
+    if (threshold != 0 && std::fabs(real_value - (hypercube_area * third / i)) < threshold) {
+      break;
     }
   }
   
-  std::cout << "hypercube area: " << hypercube_area << " | M: " << M << std::endl;
-  return hypercube_area * third / M;
+  std::cout << "hypercube area: " << hypercube_area << " | iterations: " << i << std::endl;
+  return hypercube_area * third / i;
 }
 
 int main(int argc, char* argv[]) {
@@ -79,7 +62,7 @@ int main(int argc, char* argv[]) {
   };
   std::vector<std::pair<double, double>> hypercube_pi = {{-1.0, 1.0}, {-1.0, 1.0}};
   std::cout << montecarlo(f_pi, h_pi, hypercube_pi, 1000000) << std::endl;
-  std::cout << montecarlo(f_pi, h_pi, hypercube_pi, .0001, 3.14159265359) << std::endl;
+  std::cout << montecarlo(f_pi, h_pi, hypercube_pi, 1000000, 3.14159265359, .0001) << std::endl;
   // f(x) = x^2
   auto f_quad = [](std::vector<double> point) -> double {
     return point[0] * point[0];
@@ -97,7 +80,33 @@ int main(int argc, char* argv[]) {
   };
   // Definite integral from 0 to 2
   std::vector<std::pair<double, double>> hypercube_quad = {{0, 2}}; 
-  std::cout << montecarlo(f_quad, h_quad2, hypercube_quad, 1000000) << std::endl;
-  std::cout << montecarlo(f_quad, h_quad2, hypercube_quad, .0001, 2.66666666) << std::endl;
+  std::cout << montecarlo(f_quad, h_quad2, hypercube_quad, 1'000'000) << std::endl;
+  std::cout << montecarlo(f_quad, h_quad2, hypercube_quad, 1'000'000, 2.66666666, .0001) << std::endl;
+
+  // Volume of hyperspheres
+  auto f_sphere_r1 = [](std::vector<double> point) -> double {
+    return 1;
+  };
+  auto f_sphere_r2 = [](std::vector<double> point) -> double {
+    return 4;
+  };
+  auto f_sphere_r3 = [](std::vector<double> point) -> double {
+    return 9;
+  };
+  auto h_sphere = [](std::vector<double> point, double (*f)(std::vector<double>)) -> int {
+    if (magnitude(point) <= 1) {
+      return f(point);
+    }
+    return 0;
+  };
+  
+  // 4d hypersphere w/ radius 2
+  std::vector<std::pair<double, double>> hypercube_hs_4d_r2;
+  for (size_t i = 0; i < 4; i++) {
+    hypercube_hs_4d_r2.push_back({-2, 2});
+  }
+  std::cout << montecarlo(f_sphere_r2, h_sphere, hypercube_hs_4d_r2, 1'000'000) << std::endl;
+  std::cout << montecarlo(f_sphere_r2, h_sphere, hypercube_hs_4d_r2, 1'000'000, 78.9568352087, .0001) << std::endl;
+
   return 0;
 }
