@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH -A reynolds_math6370_1252_001c_0001
+#SBATCH -N 2
+#SBATCH --ntasks-per-node=64
+#SBATCH -p standard-s    # requested queue
+#SBATCH -t 5             # maximum runtime in minutes
+#SBATCH --exclusive          # do not share nodes
+#SBATCH -o output_128.txt        # output file
+#SBATCH --error=err_128.txt
+
+srun ./driver_mpi_async.exe
+

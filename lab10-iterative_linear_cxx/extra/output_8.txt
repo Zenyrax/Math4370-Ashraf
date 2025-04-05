@@ -1,0 +1,9 @@
+iterative test with 8 processors
+    gamma = 4
+    linear solver tolerance delta = 1e-10
+    global problem size N = 10000000
+    local problem sizes n = 1250000
+ initial residual: ||T*u-r||_2 = 0.000316228
+ converged in 128 iterations at delta = 1e-10
+ solution time: 0.811047 seconds
+ final residual: ||T*u-r||_2 = 8.96348e-11

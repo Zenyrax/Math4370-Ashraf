@@ -1,0 +1,11 @@
+#!/bin/bash
+#SBATCH -A reynolds_math6370_1252_001c_0001
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=8
+#SBATCH -p standard-s    # requested queue
+#SBATCH -t 5             # maximum runtime in minutes
+#SBATCH --exclusive          # do not share nodes
+#SBATCH -o output_blocked_8.txt        # output file
+
+srun ./driver_mpi.exe
+
