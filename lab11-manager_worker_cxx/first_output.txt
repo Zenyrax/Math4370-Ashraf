@@ -1,0 +1,22 @@
+Enter the number of intervals (0 quits):
+    i = 0  its = 6836
+    i = 1  its = 89456
+    i = 2  its = 9706
+    i = 3  its = 8743
+    i = 4  its = 5007
+    i = 5  its = 21087
+    i = 6  its = 47133
+    i = 7  its = 10825
+    i = 8  its = 30688
+    i = 9  its = 227993
+    i = 10  its = 400639
+    i = 11  its = 50457
+    i = 12  its = 62945
+    i = 13  its = 562054
+    i = 14  its = 4409
+    i = 15  its = 4929
+    i = 16  its = 45399
+    i = 17  its = 16818
+    i = 18  its = 18179
+    i = 19  its = 73060
+     runtime = 0.04379
